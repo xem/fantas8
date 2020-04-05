@@ -181,21 +181,23 @@ a) palette
   // param i: 0-3 for a background palette, 4-7 for a foreground palette.
   // params color1-4 (array): indexes of the 4 colors picked in the global palette (0-63).
   // when it's modified, every subsequent tile using it will be drawn with the new colors.
-  // The global palette is similar to the NES, with transparent on the last column (see [palette.png](palette.png)).
+  // The global palette is similar to the NES, with transparent on the last column.
   palette(i, [color1, color2, color3, color4]);
 ```
+
+See: [palette](https://xem.github.io/fantas8/palette.png).
 
 b) graphic tiles
 
 ```js
 
   // Raw tiles are stored in a 64*2 cells grid, each cell measuring 8*8px.
-   ___ ___ ___ ___ ___       ___ ___ ___ ___ 
-  | 0 | 1 | 2 | 3 | 4 | ... |60 |61 |62 |63 |
-  |___|___|___|___|___| ... |___|___|___|___|
-  |64 |65 |66 |67 |68 | ... |124|125|126|127|
-  |___|___|___|___|___| ... |___|___|___|___|
-  
+  //  ___ ___ ___ ___ ___       ___ ___ ___ ___ 
+  // | 0 | 1 | 2 | 3 | 4 | ... |60 |61 |62 |63 |
+  // |___|___|___|___|___| ... |___|___|___|___|
+  // |64 |65 |66 |67 |68 | ... |124|125|126|127|
+  // |___|___|___|___|___| ... |___|___|___|___|
+  //
   // tile_8() is used to set or modify any 8*8px graphic tile.
   // The tile's content can be either a bitmap (pixel art) or text (one Unicode character).
   // For bitmap, each pixel can have 4 possible values (0, 1, 2, 3), corresponding to the 4 colors of a palette.
@@ -311,7 +313,6 @@ d) sprites
   // param c: channel (0 = wave1, 1 = wave2, 2 = triangle, 3 = noise).
   // param note: 0-87 (similar to piano keys: 0 = A0 = 27.5Hz; 87 = C8 = 4186.01Hz).
   // param duration: 0-127 (in 1/10ths of a second, 0 = infinite).
-  // List of frequencies: [frequencies.png](frequencies.png).
   sound(c, note, duration);
   
   // melody() plays a list of notes with a given duration and offset between each note.
@@ -321,6 +322,8 @@ d) sprites
   // sound_off() stops the sound emitted by a channel.
   sound_off(c);
 ```
+
+See: [List of frequencies](https://xem.github.io/fantas8/frequencies.png).
 
 4) Controls
 
@@ -377,7 +380,7 @@ b) scroll screen (move viewport inside global area)
   // [-128: 127]                [127:127]
   //
   // scroll() moves the 128*128px viewport inside the 256*256px global area.
-  // default position is top left ([-128:127]).
+  // default position is top left: [-128:127].
   // param x: -128 - 127.
   // param y: -128 - 127.
   scroll(x, y);
